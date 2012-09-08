@@ -2,12 +2,15 @@
 #include "header.h"
 
 // Input file variables
-String room_file = "Rooms.out";
-String rollno_file = "RollNo.out";
+char ROOM_FILE[20] = "Rooms.out";
+char ROLLNO_FILE[20] = "RollNo.out";
+char SEATPLAN_FILE[20] = "SeatPlan.out";
+//string room_file = "Rooms.out";
+//string rollno_file = "RollNo.out";
 
 // Defining array size
-const int max_size = 200;
-const int min_size = 50;
+const int MAX_SIZE = 200;
+const int MIN_SIZE = 50;
 
 // fstream variables
 ifstream infile;    // For reading contents of file
