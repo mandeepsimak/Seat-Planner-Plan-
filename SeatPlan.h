@@ -9,8 +9,8 @@ class Room
     protected:
     
     // Room variables
-    string room_no[min_size];
-    int rows[min_size], cols[min_size], total_rooms;
+    string room_no[MIN_SIZE];
+    int rows[MIN_SIZE], cols[MIN_SIZE], total_rooms;
     
     public:
     
@@ -24,9 +24,9 @@ class RollNo
     protected:
     
     //Roll No variables
-    int total_branches, rollno[min_size][max_size], total_rollno[min_size],
-        total_subjects;
-    string branch_name[min_size], subjects[min_size][min_size];
+    int total_branches, rollno[MIN_SIZE][MAX_SIZE], total_rollno[MIN_SIZE],
+        total_subjects[MIN_SIZE];
+    string branch_name[MIN_SIZE], subjects[MIN_SIZE][MIN_SIZE];
     
     public:
     
@@ -34,14 +34,41 @@ class RollNo
     void RollNo_details();
 };
 
-// Class SeatPlan for sitting plan
-class SeatPlan : public Room, RollNo
+class Exam
 {
     protected:
     
+    // Variables for exam details.
+    string examName, examTime, examDate, examVenue;
+    
+    public:
+    
+    void Exam_details();
+    void Exam_show_details();
+};
+
+// Class SeatPlan for sitting plan
+class SeatPlan : public Room, public RollNo, public Exam
+{
+    protected:
+    
+    int row, col, nxt_room, nxt_branch, x, y, n, sum, count[MIN_SIZE],
+        seat_array[MIN_SIZE][MAX_SIZE], total_seat[MIN_SIZE],
+        total_array[MIN_SIZE], set_seat[MIN_SIZE][MIN_SIZE][MAX_SIZE],
+        start_rno[MIN_SIZE], end_rno[MIN_SIZE], max_rno;//[MIN_SIZE];
     
     public:
     
     // Getting room and roll no details
+    SeatPlan();
     void get_details();
+    void show_details();
+    void set_room();
+    void set_seatarray();
+    void seat_plan();
+    void display_plan();
+    string branch(int);
+    void count_rollno();
+    void valid();
+    
 };
