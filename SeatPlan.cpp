@@ -3,6 +3,21 @@
 
 // Function Definition
 
+//void common :: common_vars()
+//{
+//    // Input file variables
+//    ROOM_FILE = "Rooms.out";
+//    ROLLNO_FILE = "RollNo.out";
+//    SEATPLAN_FILE = "SeatPlan.out";
+//    //string room_file = "Rooms.out";
+//    //string rollno_file = "RollNo.out";
+//    
+//    // Defining array size
+//    MAX_SIZE = 200;
+//    MIN_SIZE = 50;
+
+//}
+
 // Room :: Room_details fun. definition
 void Room :: Room_details()
 {
@@ -162,65 +177,74 @@ void SeatPlan :: set_seatarray()
             }
         }
     }
+    
+    /*for(i = 0; i < 4; i++)
+    {
+        for(j = 0; j < total_rollno[i]; j++)
+            cout<<seat_array[i][j]<<"\t";// = rollno[nxt_branch][j];
+        cout<<"\n";
+    }*/
+    //cout<<"seat2";
 }
 
 // Seat Allotment
 void SeatPlan :: seat_plan()
 {
+//    cout<<"seat1";
     set_seatarray();
+    //set_room();
     
     for(int rooms = 0; rooms < total_rooms; rooms++)
     {
         set_room();
-        
+//        cout<<"seat";
         for(x = 0; x < col; x++)
         {
             for(y = 0; y < row; y++)
             {
-                set_seatarray();
+                //set_seatarray();
                 
                 if(n < 4 && n >= 0)
                 {
-                    set_seat[rooms][x][y] = seat_array[n][total_array[n]];
+                    set_seat[rooms][y][x] = seat_array[n][total_array[n]];
                     total_array[n]++;
                     n++;
                 }
             }
-        }
-        
-        if(n >= 4 || n < 0)
-        {
-            n = 0;
+            if(n >= 4 || n < 0)
+            {
+                n = 0;
+            }
         }
     }
     
-    for(k=0; k<total_branches; i++)
+    /*for(k = 0; k < total_rooms; k++)
     {
-        if(count[k] != 0)
-            outfile<<branch_name[k]<<" : ";
+        cout<<"Room No: "<<room_no[k]<<endl;
         
-        if(start_rno[k] != 37657 && end_rno[k] != 0)
-            outfile<<"{"<<start_rno[k]<<" to "<<end_rno[k]<<"}";
-        
-        if(count[k] != 0)
-            outfile<<" = "<<count[k]<<endl;
-    }
+        for(x=0; x<rows[k]; x++)
+        {
+            for(y=0; y<cols[k]; y++)
+            {
+                cout<<branch(set_seat[k][y][x])<<set_seat[k][y][x]<<"\t";
+            }
+            cout<<'\n';
+        }
+    }*/
     
-    outfile<<"Total: "<<sum;
-    outfile.close();
 }
 
 // Display seat plan
 void SeatPlan :: display_plan()
 {
-    outfile.open("SEATPLAN_FILE");
+    outfile.open(SEATPLAN_FILE);
     
     for(k = 0; k < total_rooms; k++)
     {
         count_rollno();
         Exam_show_details();
         
-        outfile<<"Room No: "<<room_no[k]<<endl;
+        outfile<<"Room No: "<<room_no[k]<<"\n"<<endl;
         
         for(x=0; x<rows[k]; x++)
         {
@@ -230,7 +254,24 @@ void SeatPlan :: display_plan()
             }
             outfile<<'\n';
         }
+        outfile<<'\n';
+        //for(k=0; k<total_branches; i++)
+        {
+            if(count[k] != 0)
+                outfile<<branch_name[k]<<" : ";
+        
+            if(start_rno[k] != 37657 && end_rno[k] != 0)
+                outfile<<"{"<<start_rno[k]<<" to "<<end_rno[k]<<"}";
+        
+            if(count[k] != 0)
+                outfile<<" = "<<count[k]<<"\n"<<endl;
+        }
+    
+        outfile<<"\nTotal: "<<sum<<"\n\n";
     }
+    
+    
+    outfile.close();
 }
 
 // Return name of branch
@@ -275,68 +316,67 @@ void SeatPlan :: count_rollno()
 // Validation seat plan
 void SeatPlan :: valid()
 {
-	int students=0, seats=0;
-	max_rno = 0;
-	char choice;
+    int students=0, seats=0;
+    max_rno = 0;
+    char choice;
 
-	for(x=0; x<total_branches; x++)
-	{
-		students += total_rollno[x];
-	}
-	for(x=0; x<total_rooms; x++)
-	{
-		seats += (rows[x] * cols[x]);
-	}
+    for(x=0; x<total_branches; x++)
+    {
+        students += total_rollno[x];
+    }
+    for(x=0; x<total_rooms; x++)
+    {
+        seats += (rows[x] * cols[x]);
+    }
 
-	if(students > seats)
-	{
-		system("clear");
-		cout<<"\nThis strategy is not applicable because of less seats."
-			<<endl<<"Total Seats: "<<seats<<endl
-			<<"Total students: "<<students<<endl
-			<<"More Seats Required: "<<(students-seats)<<endl
-			<<"Please add more rooms in input file."<<endl;
-	}
-	else if(seats > students || seats == students)
-	{
-		system("clear");
-		cout<<"\n Strategy - 1"
-			<<endl<<"Total Seats: "<<seats<<endl
-			<<"Total students: "<<students<<endl;
-		int d = max_rno / 18;
-		int r = max_rno % 18;
-		if(d > total_rooms)
-		{
-			cout<<"This Strategy is not appicaple."<<endl
-				<<"Rooms required for max. class rollno: "<<d<<endl
-				<<"Add more rooms in input file to complete this stretegy"
-				<<endl;
-		}
-		else
-		{
-		    do
-			{
-			    cout<<"\nStrategy applicable. Press 'Y' to continue."<<endl;
-			    cin>>choice;
-		
-			    switch(choice)
-			    {
-				    case 'Y':
-				    	//exam_details();
-				    	//report_choice();
-				    	seat_plan();	// Call to seat_plan() function
-				    	display_plan();
-				    	cout<<"\n Check seatplan.out file for seat plan."<<endl;
-				    	break;
-			    
-				    default:
-				    	cout<<"\nWrong Choice"<<endl;
-				    	break;
-			    }
-			}
-			while(choice != 'Y');
-		}
+    if(students > seats)
+    {
+        system("clear");
+        cout<<"\nThis strategy is not applicable because of less seats."
+            <<endl<<"Total Seats: "<<seats<<endl
+            <<"Total students: "<<students<<endl
+            <<"More Seats Required: "<<(students-seats)<<endl
+            <<"Please add more rooms in input file."<<endl;
+    }
+    else if(seats > students || seats == students)
+    {
+        system("clear");
+        cout<<"\n Strategy - 1"
+            <<endl<<"Total Seats: "<<seats<<endl
+            <<"Total students: "<<students<<endl;
+        int d = max_rno / 18;
+        int r = max_rno % 18;
+        if(d > total_rooms)
+        {
+            cout<<"This Strategy is not appicaple."<<endl
+                <<"Rooms required for max. class rollno: "<<d<<endl
+                <<"Add more rooms in input file to complete this stretegy"
+                <<endl;
+        }
+        else
+        {
+            do
+            {
+                cout<<"\nStrategy applicable. Press 'Y' to continue."<<endl;
+                cin>>choice;
 
-	}
+                switch(choice)
+                {
+                    case 'Y':
+                        //exam_details();
+                        //report_choice();
+                        seat_plan();	// Call to seat_plan() function
+                        display_plan();
+                        cout<<"\n Check seatplan.out file for seat plan."<<endl;
+                        break;
+                
+                    default:
+                        cout<<"\nWrong Choice"<<endl;
+                        break;
+                    }
+            }
+            while(choice != 'Y');
+        }
+    }
 }
 

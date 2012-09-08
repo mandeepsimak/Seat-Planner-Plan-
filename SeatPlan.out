@@ -1,0 +1,44 @@
+Room No: Room-1
+
+ D4IT A-101	 D4IT A-103	 D4IT A-104	 D4IT A-105	 D4IT A-106	 D4IT A-107	
+ CSE 4th Yr-201	 CSE 4th Yr-203	 CSE 4th Yr-204	 CSE 4th Yr-205	 CSE 4th Yr-206	 CSE 4th Yr-207	
+ ME 1st Yr-301	 ME 1st Yr-302	 ME 1st Yr-303	 ME 1st Yr-304	 ME 1st Yr-305	 ME 1st Yr-306	
+ ECE 2nd Sem-401	 ECE 2nd Sem-402	 ECE 2nd Sem-403	 ECE 2nd Sem-404	 ECE 2nd Sem-405	 ECE 2nd Sem-406	
+0	0	0	0	0	0	
+0	0	0	0	0	0	
+
+ D4IT A : {101 to 107} = 6
+
+
+Total: 24
+
+Room No:  Room-2
+
+ D4IT A-108	 D4IT A-109	 D4IT A-110	 D4IT A-119	 D4IT A-120	 D4IT A-121	
+ CSE 4th Yr-208	 CSE 4th Yr-209	 CSE 4th Yr-212	 CSE 4th Yr-213	 CSE 4th Yr-214	 CSE 4th Yr-215	
+ ME 1st Yr-307	 ME 1st Yr-308	 ME 1st Yr-309	 ME 1st Yr-310	 ME 1st Yr-322	 ME 1st Yr-323	
+ ECE 2nd Sem-407	 ECE 2nd Sem-408	 ECE 2nd Sem-409	 ECE 2nd Sem-410	 ECE 2nd Sem-415	0	
+0	0	0	0	0	0	
+0	0	0	0	0	0	
+0	0	0	0	0	0	
+0	0	0	0	0	0	
+
+ CSE 4th Yr : {208 to 215} = 6
+
+
+Total: 47
+
+Room No:  Room-3
+
+ D4IT A-122	 D4IT A-123	 D4IT A-124	 D4IT A-125	 D4IT A-126	 D4IT A-131	
+ CSE 4th Yr-230	 CSE 4th Yr-231	 CSE 4th Yr-232	 CSE 4th Yr-233	 CSE 4th Yr-234	 CSE 4th Yr-235	
+ ME 1st Yr-324	 ME 1st Yr-325	 ME 1st Yr-326	 ME 1st Yr-327	 ME 1st Yr-328	 ME 1st Yr-329	
+0	0	0	0	0	0	
+0	0	0	0	0	0	
+0	0	0	0	0	0	
+
+ ME 1st Yr : {324 to 329} = 6
+
+
+Total: 65
+

@@ -10,6 +10,8 @@ int main()
     seatplan.get_details();
     seatplan.show_details();
     seatplan.valid();
+    //seatplan.set_seatarray();
+    //seatplan.seat_plan();
     
     return 0;
 }
